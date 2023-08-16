@@ -689,26 +689,30 @@ public class Game extends JFrame {
                                             }
                                         }
                                     } else { // white king not in check already
-                                        if(selectedSquare.getPiece().getType() == 'K' && x == 6 && y == 7) { //king side castles
-                                            selectedSquare.getPiece().move(x, y);
-                                            board[7][7].getPiece().move(5, 7);
-                                            clickCount = 0;
-                                            board[y][x].setPiece(selectedSquare.getPiece());
-                                            board[y][x].getPanel().add(pieces.get(selectedSquare.getPiece()));
-                                            board[selectedSquare.getY()][selectedSquare.getX()].setPiece(null);
-                                            board[7][5].setPiece(board[7][7].getPiece());
-                                            board[7][5].getPanel().add(pieces.get(board[7][7].getPiece()));
-                                            board[7][7].setPiece(null);
-                                        } else if(selectedSquare.getPiece().getType() == 'K' && x == 2 && y == 7) { //queen side castles
-                                            selectedSquare.getPiece().move(x, y);
-                                            board[7][0].getPiece().move(3, 7);
-                                            clickCount = 0;
-                                            board[y][x].setPiece(selectedSquare.getPiece());
-                                            board[y][x].getPanel().add(pieces.get(selectedSquare.getPiece()));
-                                            board[selectedSquare.getY()][selectedSquare.getX()].setPiece(null);
-                                            board[7][3].setPiece(board[7][0].getPiece());
-                                            board[7][3].getPanel().add(pieces.get(board[7][0].getPiece()));
-                                            board[7][0].setPiece(null);
+                                        if(selectedSquare.getPiece().getType() == 'K' && x == 6 && y == 7 && !selectedSquare.getPiece().hasMoved() && board[7][7].getPiece() != null) { //king side castles
+                                            if(board[7][7].getPiece().getType() == 'R' && !board[7][7].getPiece().hasMoved()) {
+                                                selectedSquare.getPiece().move(x, y);
+                                                board[7][7].getPiece().move(5, 7);
+                                                clickCount = 0;
+                                                board[y][x].setPiece(selectedSquare.getPiece());
+                                                board[y][x].getPanel().add(pieces.get(selectedSquare.getPiece()));
+                                                board[selectedSquare.getY()][selectedSquare.getX()].setPiece(null);
+                                                board[7][5].setPiece(board[7][7].getPiece());
+                                                board[7][5].getPanel().add(pieces.get(board[7][7].getPiece()));
+                                                board[7][7].setPiece(null);
+                                            }
+                                        } else if(selectedSquare.getPiece().getType() == 'K' && x == 2 && y == 7 && !selectedSquare.getPiece().hasMoved() && board[7][0].getPiece() != null) { //queen side castles
+                                            if(board[7][0].getPiece().getType() == 'R' && !board[7][0].getPiece().hasMoved()) {
+                                                selectedSquare.getPiece().move(x, y);
+                                                board[7][0].getPiece().move(3, 7);
+                                                clickCount = 0;
+                                                board[y][x].setPiece(selectedSquare.getPiece());
+                                                board[y][x].getPanel().add(pieces.get(selectedSquare.getPiece()));
+                                                board[selectedSquare.getY()][selectedSquare.getX()].setPiece(null);
+                                                board[7][3].setPiece(board[7][0].getPiece());
+                                                board[7][3].getPanel().add(pieces.get(board[7][0].getPiece()));
+                                                board[7][0].setPiece(null);
+                                            }
                                         } else {
                                             board[y][x].setPiece(selectedSquare.getPiece());
                                             board[selectedSquare.getY()][selectedSquare.getX()].setPiece(null);
@@ -757,26 +761,30 @@ public class Game extends JFrame {
                                         }
                                     }
                                 } else { //blacks turn
-                                    if(selectedSquare.getPiece().getType() == 'k' && x == 6 && y == 0) { //king side castles
-                                        selectedSquare.getPiece().move(x, y);
-                                        board[0][7].getPiece().move(5, 0);
-                                        clickCount = 0;
-                                        board[y][x].setPiece(selectedSquare.getPiece());
-                                        board[y][x].getPanel().add(pieces.get(selectedSquare.getPiece()));
-                                        board[selectedSquare.getY()][selectedSquare.getX()].setPiece(null);
-                                        board[0][5].setPiece(board[0][7].getPiece());
-                                        board[0][5].getPanel().add(pieces.get(board[0][7].getPiece()));
-                                        board[0][7].setPiece(null);
-                                    } else if(selectedSquare.getPiece().getType() == 'k' && x == 2 && y == 0) { //queen side castles
-                                        selectedSquare.getPiece().move(x, y);
-                                        board[0][0].getPiece().move(3, 0);
-                                        clickCount = 0;
-                                        board[y][x].setPiece(selectedSquare.getPiece());
-                                        board[y][x].getPanel().add(pieces.get(selectedSquare.getPiece()));
-                                        board[selectedSquare.getY()][selectedSquare.getX()].setPiece(null);
-                                        board[0][3].setPiece(board[0][0].getPiece());
-                                        board[0][3].getPanel().add(pieces.get(board[0][0].getPiece()));
-                                        board[0][0].setPiece(null);
+                                    if(selectedSquare.getPiece().getType() == 'k' && x == 6 && y == 0 && !selectedSquare.getPiece().hasMoved() && board[0][7].getPiece() != null) { //king side castles
+                                        if(board[0][7].getPiece().getType() == 'r' && !board[0][7].getPiece().hasMoved()) {
+                                            selectedSquare.getPiece().move(x, y);
+                                            board[0][7].getPiece().move(5, 0);
+                                            clickCount = 0;
+                                            board[y][x].setPiece(selectedSquare.getPiece());
+                                            board[y][x].getPanel().add(pieces.get(selectedSquare.getPiece()));
+                                            board[selectedSquare.getY()][selectedSquare.getX()].setPiece(null);
+                                            board[0][5].setPiece(board[0][7].getPiece());
+                                            board[0][5].getPanel().add(pieces.get(board[0][7].getPiece()));
+                                            board[0][7].setPiece(null);
+                                        }
+                                    } else if(selectedSquare.getPiece().getType() == 'k' && x == 2 && y == 0 && !selectedSquare.getPiece().hasMoved() && board[0][0].getPiece() != null) { //queen side castles
+                                        if(board[0][0].getPiece().getType() == 'r' && !board[0][0].getPiece().hasMoved()) {
+                                            selectedSquare.getPiece().move(x, y);
+                                            board[0][0].getPiece().move(3, 0);
+                                            clickCount = 0;
+                                            board[y][x].setPiece(selectedSquare.getPiece());
+                                            board[y][x].getPanel().add(pieces.get(selectedSquare.getPiece()));
+                                            board[selectedSquare.getY()][selectedSquare.getX()].setPiece(null);
+                                            board[0][3].setPiece(board[0][0].getPiece());
+                                            board[0][3].getPanel().add(pieces.get(board[0][0].getPiece()));
+                                            board[0][0].setPiece(null);
+                                        }
                                     } else {
                                         board[y][x].setPiece(selectedSquare.getPiece());
                                         board[selectedSquare.getY()][selectedSquare.getX()].setPiece(null);
